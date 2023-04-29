@@ -1,13 +1,8 @@
+import {getImgUrl} from '@utils/utils'
 
 export type QuestionSectionProps = {
   label?: string,
   question?: string, // TODO: it can be an image, even a children
-}
-
-/** @url https://vitejs.dev/guide/assets.html#new-url-url-import-meta-url */
-function getImgUrl(name: string) {
-  const path = new URL(`../../../../`, import.meta.url)
-  return `${path}assets/hiragana/${name}.png`
 }
 
 export function QuestionSection({ label, question }: QuestionSectionProps) {
