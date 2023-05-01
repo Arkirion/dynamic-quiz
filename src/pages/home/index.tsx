@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 export const Home = () => {
   return <div>
-    <Link to={`/quiz`}><Button label="Hiragana" /></Link>
-    
+    <Link to={`/quiz/hiragana`}><Button label="Hiragana" /></Link>
   </div>
 }

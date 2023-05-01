@@ -14,14 +14,16 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "allowImportingTsExtensions": true,
     "jsx": "react-jsx",
     "baseUrl": "./src",
     "paths": {
       "@components/*": ["./components/*"],
       "@pages/*": ["./pages/*"],
       "@utils/*": ["./utils/*"],
+      "@interfaces/*": ["./interfaces/index.ts"],
     }
   },
-  "include": ["src"],
+  "include": ["src", "**/*.ts", "**/*.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
