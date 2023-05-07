@@ -11,7 +11,6 @@ import { Footer } from '@components/footer';
 import { getRouterJSX } from 'router.tsx';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
     <body className='flex flex-col h-screen'>
       <Header />
       <main className='flex-grow'>
@@ -19,5 +18,4 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       </main>
       <Footer />
     </body>
-  </React.StrictMode>,
 )

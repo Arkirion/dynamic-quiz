@@ -3,12 +3,12 @@
  * @param listToShuffle e.g ['a','b','c']
  * @returns 
  */
-export const shuffle = (listToShuffle: string[]): string[] => {
+export const shuffle = <T>(listToShuffle: Array<T>): Array<T> => {
   if (listToShuffle.length === 0) {
     return [];
   }
-  const shuffledList: string[] = [];
-  const listCopy: string[] = [...listToShuffle];
+  const shuffledList: Array<T> = [];
+  const listCopy: Array<T> = [...listToShuffle];
 
   while (listCopy.length) {
     const randomIndex = Math.floor(Math.random() * listCopy.length);
@@ -20,7 +20,7 @@ export const shuffle = (listToShuffle: string[]): string[] => {
 };
 
 /** @url https://vitejs.dev/guide/assets.html#new-url-url-import-meta-url */
-export const getImgUrl = (name: string) : string => {
-  const path = new URL(`../../`, import.meta.url)
-  return `${path}assets/hiragana/${name}.png`
+export const getImgUrl = (path: string) : string => {
+  const basePath = new URL(`../../assets`, import.meta.url)
+  return `${basePath}/hiragana/${path}.png`
 }

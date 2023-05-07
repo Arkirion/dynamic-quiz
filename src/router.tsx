@@ -8,12 +8,12 @@ import { Home } from '@pages/home'
 import { ErrorPage } from '@pages/error-page';
 import { QuizNavigator } from '@pages/quiz-navigator';
 import { hiragana } from "@utils/questions"
-import { QuizType } from "@interfaces/";
+import { QuizDeck, QuizType } from "@interfaces/";
 
 /**
  * @link https://reactrouter.com/en/main/route/loader#loader
  */
-const quizLoader = ({ params }: LoaderFunctionArgs): string[] => {
+const quizLoader = ({ params }: LoaderFunctionArgs): QuizDeck[] => {
   const quizzes: QuizType = {
     'hiragana': hiragana
   }
