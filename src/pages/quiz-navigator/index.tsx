@@ -10,7 +10,14 @@ interface QuizState {
   questions: QuizDeck[];
 }
 
+interface CorrectAnswer {
+  isCorrect: null | true | false;
+  answer: string;
+}
+
 type QuizAction = Partial<QuizState>;
+type CorrectAnswerAction = Partial<CorrectAnswer>;
+
 const START_WITH_ZERO = 0;
 
 export const QuizNavigator = () => {
@@ -18,7 +25,13 @@ export const QuizNavigator = () => {
   const load = useRef(true);
   const data = useLoaderData() as QuizDeck[];
 
-  const [isCorrectText, setIsCorrectText] = useState<string>('');
+  // const [isCorrectAnswer, setIsCorrectAnswer] = useState<string>();
+
+  const [isCorrectAnswer, setIsCorrectAnswer] = useReducer((state: CorrectAnswer, action: CorrectAnswerAction) : CorrectAnswer => {
+    return { ...state, ...action };
+  }, {
+    isCorrect: null, answer: ''
+  })
 
   const [quiz, updateQuiz] = useReducer((state: QuizState, action: QuizAction) : QuizState => {
     return { ...state, ...action };
@@ -32,7 +45,7 @@ export const QuizNavigator = () => {
     }
   }, [])
 
-  const getCurrentQuestion = () => {
+  const getCurrentQuestion = () : QuizDeck => {
     return quiz.questions[quiz.questionSelected]
   }
 
@@ -45,14 +58,15 @@ export const QuizNavigator = () => {
 
     inputRef.current !== null && (inputRef.current.value = '');
     updateQuiz({ questionSelected: quiz.questionSelected + 1 })
-    setIsCorrectText(isCorrectAnswer ? 'good job!' : `La respuesta era ${correctAnswer!}`)
+    setIsCorrectAnswer({ isCorrect: isCorrectAnswer , answer: correctAnswer })
   }
 
   return (
     <>
       <ProgressBar current={quiz.questionSelected} total={quiz.questions.length}/>
       <div className="flex w-full justify-center items-start h-full">
-        <div className="flex flex-col items-center justify-start mt-24">
+        <div className="flex flex-col items-center justify-start mt-20">
+          
           <div className="flex justify-center items-center flex-col ">
             <span className="mb-1">Adivina la respuesta en hiragana!</span>
             <div className="flex bg-red-200 rounded-2xl w-96 h-36 mb-10 justify-center items-center text-center">
@@ -79,7 +93,9 @@ export const QuizNavigator = () => {
             </div>
           </div>
           <div className="w-full flex justify-start pt-1">
-            {isCorrectText}
+            {
+              isCorrectAnswer.isCorrect === null ? null : isCorrectAnswer.isCorrect ? 'good job!' : `La respuesta era ${isCorrectAnswer.answer}!`
+            }
           </div>
         </div>
       </div>
