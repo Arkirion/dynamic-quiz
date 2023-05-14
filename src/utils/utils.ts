@@ -20,6 +20,7 @@ export const shuffle = <T>(listToShuffle: Array<T>): Array<T> => {
 };
 
 /** @url https://vitejs.dev/guide/assets.html#new-url-url-import-meta-url */
+/** @deprecated */
 export const getImgUrl = (path: string) : string => {
   const basePath = new URL(`../../assets`, import.meta.url)
   return `${basePath}/hiragana/${path}.png`

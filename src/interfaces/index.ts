@@ -8,7 +8,3 @@ export interface QuizDeck  {
 }
 
 
-export type QuizType = {
-  [key: string]: QuizDeck[]
-  hiragana: QuizDeck[]
-}

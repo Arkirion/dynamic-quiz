@@ -1,5 +1,16 @@
 import { QuizDeck } from "@interfaces/*";
 
+export type QuizConfig = {
+  quizDeck: QuizDeck[],
+  name: string,
+  originalName: string,
+}
+
+export type QuizType = {
+  [key: string]: QuizConfig
+}
+
+
 export const hiragana: QuizDeck[] = [
   { type: "image", question: "あ", answer: { options: [], correct: "a" } },
   { type: "image", question: "い", answer: { options: [], correct: "i" } },
@@ -47,3 +58,21 @@ export const hiragana: QuizDeck[] = [
   { type: "image", question: "を", answer: { options: [], correct: "wo" } },
   { type: "image", question: "ん", answer: { options: [], correct: "n" } },
 ];
+
+/** 
+ * ADD configuration here <---
+ * just fill this and this should automatically add the quizz to the app */
+export const quizzes: QuizType = {
+  hiragana: {
+    quizDeck: hiragana,
+    name: 'hiragana',
+    originalName: 'ひらがな'
+  }
+}
+
+/** only used in router just in case */
+export const quizzesDefault: QuizType = {
+  ...quizzes,
+  default: quizzes[0]
+}
+

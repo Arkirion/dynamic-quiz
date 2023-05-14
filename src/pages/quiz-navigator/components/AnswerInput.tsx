@@ -30,7 +30,7 @@ export const AnswerInput = ({ quiz, updateQuiz }: AnswerInputProps) => {
   })
 
   const getCurrentQuestion = (): QuizDeck => {
-    return quiz.questions[quiz.questionSelected]
+    return quiz?.questions[quiz.questionSelected]
   }
 
   const forwardHandler = (e: React.SyntheticEvent) => {

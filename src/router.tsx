@@ -7,22 +7,18 @@ import {
 import { Home } from '@pages/home'
 import { ErrorPage } from '@pages/error-page';
 import { QuizNavigator } from '@pages/quiz-navigator';
-import { hiragana } from "@utils/questions"
-import { QuizDeck, QuizType } from "@interfaces/";
+import { QuizConfig, quizzesDefault } from "@utils/quiz-configurations"
 import { Results } from "@pages/results";
 
 /**
  * @link https://reactrouter.com/en/main/route/loader#loader
  */
-const quizLoader = ({ params }: LoaderFunctionArgs): QuizDeck[] => {
-  const quizzes: QuizType = {
-    'hiragana': hiragana
-  }
+const quizLoader = ({ params }: LoaderFunctionArgs): QuizConfig => {
   if (!params?.quiz) {
-    return quizzes['hiragana']
+    return quizzesDefault['default']
   }
 
-  return quizzes[params.quiz]
+  return quizzesDefault[params.quiz]
 }
 
 

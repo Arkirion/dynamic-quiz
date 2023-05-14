@@ -1,6 +1,8 @@
 import { HugeButton } from "@components/hugeButton";
+import { QuizConfig, quizzes } from "@utils/quiz-configurations";
 
 export const Home = () => {
+
   return (
     <>
       <div className="flex items-center flex-grow justify-center">
@@ -8,11 +10,16 @@ export const Home = () => {
           <div className="align-middle flex justify-center items-center h-[30vh] p-10">
             <span>En esta web jugaras a adivinar las letras o palabras en japonés, selecciona el modo que desees jugar</span>
           </div>
-          <HugeButton
-            headline="HIRAGANA"
-            subHeadline="ひらがな"
-            toLink="/quiz/hiragana"
-            linkClassName={'flex justify-center'} />
+          {
+            Object.values(quizzes).map( (quiz : QuizConfig) => {
+              return <HugeButton key={quiz.name}
+              headline={`${quiz.name.toLocaleUpperCase()}`}
+              subHeadline={`${quiz.originalName}`}
+              toLink={`/quiz/${quiz.name}`}
+              linkClassName={'flex justify-center'} />
+            })
+          }
+
         </div>
       </div>
     </>)
