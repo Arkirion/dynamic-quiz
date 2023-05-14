@@ -9,6 +9,7 @@ import { ErrorPage } from '@pages/error-page';
 import { QuizNavigator } from '@pages/quiz-navigator';
 import { hiragana } from "@utils/questions"
 import { QuizDeck, QuizType } from "@interfaces/";
+import { Results } from "@pages/results";
 
 /**
  * @link https://reactrouter.com/en/main/route/loader#loader
@@ -39,11 +40,16 @@ export const getRouterJSX = () => {
         element={<QuizNavigator />}
         loader={(params) => quizLoader(params)}
       />
+      <Route
+        path="/results"
+        element={<Results />}
+      />
     </>
   ));
 }
 
 /** example of the other way to get build the router */
+/** @deprecated */
 const getRouterObject = () => {
   return createBrowserRouter([
     {
