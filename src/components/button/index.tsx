@@ -18,7 +18,7 @@ export function Button({
         inline-flex items-center
         px-5 py-2.5 rounded-lg
         font-medium text-sm text-center
-        text-white bg-gray-700 hover:bg-gray-800
+        text-text bg-secondary
         ">
       {label.toLocaleUpperCase()}
       <span className="ml-3"> {icon}</span>
