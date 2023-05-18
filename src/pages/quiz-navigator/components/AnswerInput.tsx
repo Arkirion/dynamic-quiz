@@ -52,13 +52,13 @@ export const AnswerInput = ({ quiz, updateQuiz }: AnswerInputProps) => {
     if (!isCorrectAnswer.isCorrect) {
       return (
         <span>
-          La respuesta era <span className="text-color underline font-semibold">{isCorrectAnswer.answer.toLocaleUpperCase()}</span> !
+          La respuesta era <span className="text-color underline font-semibold text-red-600">{isCorrectAnswer.answer.toLocaleUpperCase()}</span> !
         </span>
       )
     }
     return (
-      <span>
-        good job!
+      <span className="animate-pulse font-bold text-green-600">
+        Good job!
       </span>
     )
   }
